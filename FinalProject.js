@@ -38,3 +38,4 @@ function addMarker(location, map, icon) {
 }
 
 google.maps.event.addDomListener(window, 'load', initMap);
+
