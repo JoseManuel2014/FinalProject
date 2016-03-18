@@ -1,0 +1,19 @@
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: lightblue;
+        border: 2px solid black;
+      }
+
+#map {
+  height: 80%;
+  width: 80%;
+  margin:20px;
+  border: 2px solid black;
+}
+
+h2 {
+  margin:20px;
+  color: red;
+}
