@@ -18,8 +18,21 @@ window.onload = function () {
      var location = event.latLng;
      addMarker(location, image);
    });
+
+   map.addListener('mousemove', function (event) {
+      displayCoordinates(event.latLng);               
+   });
   // Add a marker at the center of the map.
    addMarker(Aguascalientes, image);
+};
+
+function displayCoordinates(location) {
+    var lat = location.lat();
+    lat = lat.toFixed(4);
+    var lng = location.lng();
+    lng = lng.toFixed(4);
+    var coords = 'Latitude: ' + location.lat().toFixed(4) + '&nbsp&nbspLongitude: ' + location.lng().toFixed(4) ;
+    document.getElementById("coordinates").innerHTML=coords;
 };
 
 function addMarker(location, icon) {
