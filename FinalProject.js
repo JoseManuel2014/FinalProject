@@ -6,12 +6,15 @@ var map;
 var markers = [];
 var markerId = 1;
 var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+var image0 = 'http://www.googlemapsmarkers.com/v1/A/0099FF/';
+
 
 window.onload = function () {
   var Aguascalientes = {lat: 21.8833, lng: -102.283};
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
-    center: Aguascalientes
+    center: Aguascalientes,
+    mapTypeId: google.maps.MapTypeId.HYBRID
   });
   // This event listener calls addMarker() when the map is clicked.
    map.addListener('click', function(event) {
@@ -19,18 +22,14 @@ window.onload = function () {
      addMarker(location, image);
    });
 
-   map.addListener('mousemove', function (event) {
+   map.addListener('mousemove', function(event) {
       displayCoordinates(event.latLng);               
    });
   // Add a marker at the center of the map.
-   addMarker(Aguascalientes, image);
+   addMarker(Aguascalientes, image0);
 };
 
 function displayCoordinates(location) {
-    var lat = location.lat();
-    lat = lat.toFixed(4);
-    var lng = location.lng();
-    lng = lng.toFixed(4);
     var coords = 'Latitude: ' + location.lat().toFixed(4) + '&nbsp&nbspLongitude: ' + location.lng().toFixed(4) ;
     document.getElementById("coordinates").innerHTML=coords;
 };
@@ -42,7 +41,7 @@ function addMarker(location, icon) {
     position: location,
     label: labels[labelIndex++ % labels.length],     // If wanted a letter as label 
     map: map,
-    icon: image,                                     // if wantyed an icon image
+    icon: icon,                                     // if wantyed an icon image
     draggable:true,                                  // If wanted to drag the marker
     title:"Drag me!"
   });
